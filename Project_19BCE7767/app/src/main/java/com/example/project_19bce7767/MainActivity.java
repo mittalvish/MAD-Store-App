@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     EditText user,pass;
     Button b;
@@ -30,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
                 for (int i=0;i< username.length; i++) {
-                    if (user.getText().toString().equals(username[i]) && pass.getText().toString().equals(password[i])) {
+                    if (Objects.equals(user.getText().toString(),username[i]) && Objects.equals(pass.getText().toString(),password[i])) {
                         Toast.makeText(getApplicationContext(), "Welcome", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), ListActivity.class);
                         startActivity(intent);
                         //flag = 1;
                         break;
